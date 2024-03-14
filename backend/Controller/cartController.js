@@ -8,7 +8,7 @@ try {
   
  await Register.updateOne(
         {
-          _id: req.userId, // Specify the document by its _id or other criteria
+          _id: req.userId, 
           "belongUser._id": { $not: { $eq: req.body._id } }
         },
         {

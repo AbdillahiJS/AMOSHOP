@@ -6,12 +6,15 @@ import ReactLoading from 'react-loading';
 
 const Home = () => {
  
-  const {data,isLoading,isSuccess} =useQuery({
+  const {data,isLoading,isSuccess,isError} =useQuery({
     queryKey:['allProduct'],
     queryFn:async()=>{
-      let response =await fetch('http://localhost:8000/products')
-    let res = await response.json()
-    return res
+     
+        let response =await fetch('http://localhost:8000/products')
+      let res = await response.json()
+      return res
+        
+     
     }
   })
 

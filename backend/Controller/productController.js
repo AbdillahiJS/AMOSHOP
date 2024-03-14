@@ -26,6 +26,7 @@ let postProducts=async(req,res)=>{
                 quantity:req.body.qty,
             })
             let newProduct = await product.save()
+          
         res.json({success:'File uploaded successfully!',newProduct});
     } catch (error) {
         console.log('postProductError>',error);
@@ -87,7 +88,7 @@ let loginController =async(req,res)=>{
     try {
         
       let user = await Register.findOne({email:req.body.email})
-      console.log('user ',user);
+     
       let token =jwt.sign({id:user._id},'mysecret')
       
       res.json({user,token})
@@ -108,7 +109,7 @@ let getLoginController =async(req,res)=>{
 }
 
 let postOrderController=async(req,res)=>{
-    console.log('shipping ',req.body);
+  
     try {
         let userOneShipping =await Register.findById(req.userId)
        
@@ -143,8 +144,8 @@ let getOrderController=async(req,res)=>{
 let putOrderController=async(req,res)=>{
 
     try {
-      let orderUpdated = await Order.findOneAndUpdate({_id:req.params.id},{$set:{productOrdered:req.body}})
-      console.log(orderUpdated);
+       await Order.findOneAndUpdate({_id:req.params.id},{$set:{productOrdered:req.body}})
+    
       res.json('orderUpdated')
     } catch (error) {
       console.log('orderUpdatedError ',error);
@@ -154,8 +155,8 @@ let putOrderController=async(req,res)=>{
 let putShippingrController=async(req,res)=>{
 
     try {
-      let orderUpdated = await Order.findOneAndUpdate({_id:req.params.id},{$set:{address:req.body.address,number:req.body.number}})
-      console.log(orderUpdated);
+      await Order.findOneAndUpdate({_id:req.params.id},{$set:{address:req.body.address,number:req.body.number}})
+    
       res.json('orderUpdated')
     } catch (error) {
       console.log('shippingUpdateError ',error);

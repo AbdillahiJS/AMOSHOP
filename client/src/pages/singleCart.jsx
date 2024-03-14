@@ -87,7 +87,7 @@ let navigate =useNavigate()
       <div className="">
         ${price}
       </div>
-<div className="text-xl border-2 border-solid border-red-400 w-1/3 rounded-md">
+<div className="text-xl ring-1 ring-black w-1/3 rounded-md">
 <select id="mySelect"  value={selectedValue}  onChange={handleSelectChange} className='w-full p-1'>
 {/* value={selectedValue} */}
     <option value={1}>1</option>
@@ -95,9 +95,14 @@ let navigate =useNavigate()
     <option value={3}>3</option>
     <option value={4}>4</option>
     <option value={5}>5</option>
+    <option value={6}>6</option>
+    <option value={7}>7</option>
+    <option value={8}>8</option>
+    <option value={9}>9</option>
+    <option value={10}>10</option>
   </select>
 </div>
-<div className="border-2 border-solid border-red-400 p-1">
+<div className=" p-1 cursor-pointer">
 <FaTrash 
  onClick={()=>{
   mutation.mutate(_id)
